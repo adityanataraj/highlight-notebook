@@ -164,7 +164,7 @@
             <div class="subscribe-forms" id="early-access">
               <iframe
                 src="https://subscribe-forms.beehiiv.com/34be9d0b-2b62-49fe-ab80-da09e1bc2273"
-                style="height: 100%; width: 100%"
+                id="beehiiv-form"
                 class="beehiiv-embed"
                 data-test-id="beehiiv-embed"
                 frameborder="0"
@@ -172,6 +172,18 @@
               ></iframe>
               <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
             </div>
+            <script>
+              window.addEventListener("load", () => {
+                const iframe = document.getElementById("beehiiv-form");
+            
+                iframe.addEventListener("load", () => {
+                  // Force Beehiiv to calculate height & styles
+                  if (window.beehiivEmbedScript?.resize) {
+                    window.beehiivEmbedScript.resize();
+                  }
+                });
+              });
+          </script>
         </section>
       </main>
 
